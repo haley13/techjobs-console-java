@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.console;
 
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -7,9 +8,8 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+
 
 /**
  * Created by LaunchCode
@@ -57,12 +57,12 @@ public class JobData {
     /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
-     *
+     * <p>
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
      *
-     * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param column Column that should be searched.
+     * @param value  Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
@@ -113,7 +113,7 @@ public class JobData {
                     newJob.put(headerLabel, record.get(headerLabel));
                 }
 
-                allJobs.add(newJob);
+                allJobs.add(newJob); //creates the ArrayList allJobs that contains the loaded data
             }
 
             // flag the data as loaded, so we don't do it twice
@@ -125,4 +125,44 @@ public class JobData {
         }
     }
 
-}
+    /*@param column that should be searched.
+            * @param value  Value of teh field to search for
+            * @return List of all jobs matching the criteria*/
+
+ public static ArrayList<HashMap<String, String>> findByValue(String value) {
+     loadData();
+     Scanner input = new Scanner(System.in);
+
+
+     ArrayList<HashMap<String, String>> jobList = new ArrayList<>();//create a new ArrayList named jobList
+
+     for (HashMap<String, String> row : allJobs) {
+         for (Map.Entry<String, String> rowInfo : row.entrySet()) {//row
+
+             String bValue = rowInfo.getValue();
+             if (bValue.contains(value)) {
+                jobList.add(row);
+             }
+         }
+     }
+
+         return jobList;
+     }
+ }
+
+
+
+
+
+
+
+
+//String bValue= row.add(column);//row is a HashMap of all jobs, same key, different
+//                //value for each key, so I'm really looping through the values in each column
+//for (int i = 0; i < jobList.size(); i++) {
+//
+//        for (int j = i + 1; j < jobList.size(); j++) {
+//            if (jobList.get(i).equals(jobList.get(j))) {
+//                jobList.remove(j);
+//                j--;
+//                System.out.println(jobList.get());

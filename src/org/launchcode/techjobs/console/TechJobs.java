@@ -1,9 +1,10 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+
+
+import java.util.*;
+
+
 
 /**
  * Created by LaunchCode
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
+
 
     public static void main (String[] args) {
 
@@ -59,10 +61,11 @@ public class TechJobs {
 
                 // What is their search term?
                 System.out.println("\nSearch term: ");
-                String searchTerm = in.nextLine();
+                String searchTerm = in.nextLine().toLowerCase();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                   printJobs(JobData.findByValue(searchTerm));
+
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -75,7 +78,7 @@ public class TechJobs {
 
         Integer choiceIdx;
         Boolean validChoice = false;
-        String[] choiceKeys = new String[choices.size()];
+        String[] choiceKeys = new String[choices.size()];//string array of the choices hashmap
 
         // Put the choices in an ordered structure so we can
         // associate an integer with each one
@@ -110,30 +113,27 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        Scanner in = new Scanner(System.in);
-        Scanner input;
-        //iterate through the arraylist first
-        int total = 0;
-        for (Entry : list) {
-            if (integer % 2 == 0) {
-                total += integer;
-        jobs.put(JobData, 1);
-        test.add(jobs);
-        String[] strArr= jobs.toArray();
-        HashMap<String, String> m = test.get(0);
-        for (HashMap<String, String> hash : test) {
-            for (String current : hash.values()) {
-                int i=0;
-                strArr[i] = current;
-                i++;
+    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {//someJobs is the ArrayList I created,
+        Scanner input = new Scanner(System.in);
+        String stars = "*****";
+
+        for (HashMap<String, String> jobInfo : someJobs) {//each job in someJobs AL
+            //need 2 lines of code here, where do I want the stars to print, how where i want it to print relates to
+            //these for loops;
+            for (Map.Entry<String, String> jobData : jobInfo.entrySet()) {//each k,v pair in jobInfo
+
+                System.out.println(jobData.getKey() + ": " + jobData.getValue());
+
             }
         }
-        for (Map.Entry<String, String> job : jobs.entrySet()) {
-            System.out.println(job.getKey() + " (" + job.getValue() + ")");
-        }
-        //JobData.findByColumnAndValue(searchField, searchTerm)
-
-        //System.out.println(strArr);
     }
 }
+
+
+
+
+
+
+        //System.out.println(strArr);
+
+
