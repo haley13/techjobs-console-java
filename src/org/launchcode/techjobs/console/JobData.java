@@ -138,14 +138,12 @@ public class JobData {
 
      for (HashMap<String, String> row : allJobs) {
          for (Map.Entry<String, String> rowInfo : row.entrySet()) {//row
-
-             if (row.containsValue(value)){
-                 System.out.println("");
-
-             }
              String bValue = rowInfo.getValue().toLowerCase();
              if (bValue.contains(value)) {
-                 jobList.add(row);
+              jobList.add(row);//add it to the HashMap,
+             }
+             else if (row.containsValue(value)){
+                 jobList.remove(row);
              }
          }
      }
