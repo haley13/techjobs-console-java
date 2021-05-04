@@ -139,30 +139,18 @@ public class JobData {
      for (HashMap<String, String> row : allJobs) {
          for (Map.Entry<String, String> rowInfo : row.entrySet()) {//row
 
-             String bValue = rowInfo.getValue();
+             if (row.containsValue(value)){
+                 System.out.println("");
+
+             }
+             String bValue = rowInfo.getValue().toLowerCase();
              if (bValue.contains(value)) {
-                jobList.add(row);
+                 jobList.add(row);
              }
          }
      }
 
          return jobList;
      }
+
  }
-
-
-
-
-
-
-
-
-//String bValue= row.add(column);//row is a HashMap of all jobs, same key, different
-//                //value for each key, so I'm really looping through the values in each column
-//for (int i = 0; i < jobList.size(); i++) {
-//
-//        for (int j = i + 1; j < jobList.size(); j++) {
-//            if (jobList.get(i).equals(jobList.get(j))) {
-//                jobList.remove(j);
-//                j--;
-//                System.out.println(jobList.get());
