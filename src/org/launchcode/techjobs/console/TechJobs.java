@@ -120,12 +120,12 @@ public class TechJobs {
         for (HashMap<String, String> jobInfo : someJobs) {//each job in someJobs AL
             //need 2 lines of code here, where do I want the stars to print, how where i want it to print relates to
             //these for loops; i want to print the stars after each job
-
-            for (Map.Entry<String, String> jobData : jobInfo.entrySet()) {//each k,v pair in jobInfo
-
-
-                    System.out.println(jobData.getKey() + ": " + jobData.getValue());
-                }
+               if(jobInfo.size() == 5) {
+                   jobInfo.put("", "*****");
+                   for (Map.Entry<String, String> jobData : jobInfo.entrySet()) {//each k,v pair in jobInfo
+                       System.out.println(jobData.getKey() + ":" + jobData.getValue());
+                   }
+               }
             }
     }
 }
