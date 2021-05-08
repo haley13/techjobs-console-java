@@ -137,12 +137,12 @@ public class JobData {
      ArrayList<HashMap<String, String>> jobList = new ArrayList<>();//create a new ArrayList named jobList
 
      for (HashMap<String, String> row : allJobs) {
-         for (Map.Entry<String, String> rowInfo : row.entrySet()) {//row
+         for (Map.Entry<String, String> rowInfo : row.entrySet()) {
              String bValue = rowInfo.getValue().toLowerCase();
              if (bValue.contains(value)) {
               jobList.add(row);//add it to the HashMap,
-             }
-             else if (row.containsValue(value)){
+             }//else if the row(Hashmap) already contains the row
+             else if (row.containsValue(bValue)) {
                  jobList.remove(row);
              }
          }
